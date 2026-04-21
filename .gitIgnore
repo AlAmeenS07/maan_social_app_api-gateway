@@ -1,0 +1,5 @@
+node_modules
+# Keep environment variables out of version contro
+.env
+
+/generated/prisma
