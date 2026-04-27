@@ -53,3 +53,31 @@ export const checkAuth = async (req: Request, res: Response, next: NextFunction)
         return errorResponse(SOMETHING_ERROR, 500)
     }
 }
+
+
+export const adminAuthCheck = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+
+        const token = req.headers.authorization?.split(" ")[1]
+
+        if (!token) {
+            return errorResponse(TOKEN_MISSING, 401)
+        }
+
+        const decoded = veriftyToken(token) as JwtPayload
+
+        if(decoded.role != "admin"){
+            return errorResponse(INVALID_USER , 403)
+        }
+
+        (req as any).userId = decoded.userId
+
+        next()
+
+    } catch (error) {
+        if (error instanceof Error) {
+            return errorResponse(error.message, 500)
+        }
+        return errorResponse(SOMETHING_ERROR, 500)
+    }
+}

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import { USER_SERVICE_URL } from "../utils/constants";
-import { checkAuth, tempTokenCheck } from "../middlewares/user.auth";
+import { adminAuthCheck, checkAuth, tempTokenCheck } from "../middlewares/user.auth";
 
 const router = Router();
 
@@ -25,6 +25,13 @@ router.post(
 router.use("/api/v1/user", (req, res, next) => {
     if (!req.path.startsWith("/auth")) {
         return checkAuth(req, res, next);
+    }
+    next();
+});
+
+router.use("/api/v1/admin", (req, res, next) => {
+    if (!req.path.startsWith("/auth")) {
+        return adminAuthCheck(req, res, next);
     }
     next();
 });
