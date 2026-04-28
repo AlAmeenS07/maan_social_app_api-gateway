@@ -23,7 +23,7 @@ router.post(
 );
 
 router.use("/api/v1/user", (req, res, next) => {
-    if (!req.path.startsWith("/auth")) {
+    if (!req.path.startsWith("/auth") && req.path !== "/refresh-token") {
         return checkAuth(req, res, next);
     }
     next();

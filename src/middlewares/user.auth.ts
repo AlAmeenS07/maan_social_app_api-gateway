@@ -48,9 +48,9 @@ export const checkAuth = async (req: Request, res: Response, next: NextFunction)
 
     } catch (error: unknown) {
         if (error instanceof Error) {
-            return errorResponse(error.message, 500)
+            return errorResponse(error.message, 401)
         }
-        return errorResponse(SOMETHING_ERROR, 500)
+        return errorResponse(SOMETHING_ERROR, 401)
     }
 }
 
@@ -76,8 +76,8 @@ export const adminAuthCheck = async (req: Request, res: Response, next: NextFunc
 
     } catch (error) {
         if (error instanceof Error) {
-            return errorResponse(error.message, 500)
+            return errorResponse(error.message, 501)
         }
-        return errorResponse(SOMETHING_ERROR, 500)
+        return errorResponse(SOMETHING_ERROR, 401)
     }
 }
