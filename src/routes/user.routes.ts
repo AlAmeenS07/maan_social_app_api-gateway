@@ -5,6 +5,11 @@ import { adminAuthCheck, checkAuth, tempTokenCheck } from "../middlewares/user.a
 
 const router = Router();
 
+// router.use((req , res , next)=>{
+//     console.log("here" , req.headers , req.body , req.url)
+//     next()
+// })
+
 router.post(
     "/api/v1/user/auth/forgot-password",
     tempTokenCheck,
