@@ -16,14 +16,14 @@ const PORT : number = Number(process.env.PORT)
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
 
-app.use("/user-service" , userRoutes)
+app.use(process.env.USER_SERVICE_ROUTE as string , userRoutes)
 
-app.get("/" , (req , res)=>{
+app.get(process.env.BACK_SLASH_ROUTE as string, (req , res)=>{
     res.send("Api gateway is running...")
 })
 

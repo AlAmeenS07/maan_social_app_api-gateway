@@ -42,7 +42,7 @@ router.use("/api/v1/admin", (req, res, next) => {
 });
 
 router.use(
-    "/",
+    process.env.BACK_SLASH_ROUTE as string,
     createProxyMiddleware({
         target: USER_SERVICE_URL,
         changeOrigin: true,
