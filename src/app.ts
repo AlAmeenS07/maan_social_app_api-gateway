@@ -4,6 +4,7 @@ import userRoutes from "./routes/user.routes"
 import cors from "cors"
 import { errorHandler } from "./middlewares/error.middleware"
 import cookieParser from "cookie-parser"
+import mediaRoutes from "./routes/media.routes"
 
 
 dotenv.config()
@@ -22,6 +23,7 @@ app.use(
 );
 
 app.use(process.env.USER_SERVICE_ROUTE as string , userRoutes)
+app.use(process.env.MEDIA_SERVICE_ROUTE as string, mediaRoutes)
 
 app.get(process.env.BACK_SLASH_ROUTE as string, (req , res)=>{
     res.send("Api gateway is running...")
