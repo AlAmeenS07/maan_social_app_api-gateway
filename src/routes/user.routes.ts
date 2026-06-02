@@ -21,6 +21,9 @@ router.post(
                 if (req.userId) {
                     proxyReq.setHeader("x-user-id", req.userId);
                 }
+                if (req.headers["x-request-id"]) {
+                    proxyReq.setHeader("x-request-id", req.headers["x-request-id"]);
+                }
             },
         },
     })
@@ -50,6 +53,9 @@ router.use(
             proxyReq: (proxyReq, req: any) => {
                 if (req.userId) {
                     proxyReq.setHeader("x-user-id", req.userId);
+                }
+                if (req.headers["x-request-id"]) {
+                    proxyReq.setHeader("x-request-id", req.headers["x-request-id"]);
                 }
             },
         },

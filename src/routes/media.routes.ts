@@ -17,6 +17,9 @@ router.use(
                 if (req.userId) {
                     proxyReq.setHeader("x-user-id", req.userId);
                 }
+                if (req.headers["x-request-id"]) {
+                    proxyReq.setHeader("x-request-id", req.headers["x-request-id"]);
+                }
             },
         },
     })
