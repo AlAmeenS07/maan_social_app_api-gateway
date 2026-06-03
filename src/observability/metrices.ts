@@ -1,11 +1,5 @@
 import client from "prom-client";
-
-const register = new client.Registry();
-
-client.collectDefaultMetrics({
-    register,
-});
-
+import register from "../config/prom.client";
 
 export const httpRequestsTotal = new client.Counter({
 
@@ -65,5 +59,3 @@ export const httpErrorsTotal = new client.Counter({
 
 });
 
-
-export default register

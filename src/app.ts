@@ -8,7 +8,8 @@ import mediaRoutes from "./routes/media.routes"
 import postRoutes from "./routes/post.routes"
 import { metricsMiddleware } from "./middlewares/metrics.middleware"
 import { requestIdMiddleware } from "./middlewares/req.id.middleware"
-import register from "./observability/metrices"
+import register from "./config/prom.client"
+import { requestLogger } from "./middlewares/req.logger.middleware"
 
 
 dotenv.config()
@@ -17,11 +18,12 @@ const app = express()
 app.use(cookieParser())
 
 app.use(requestIdMiddleware)
+app.use(requestLogger)
 app.use(metricsMiddleware)
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "http://localhost:5173",
+    origin: process.env.FRONTEND_URL as string,
     credentials: true,
   })
 );

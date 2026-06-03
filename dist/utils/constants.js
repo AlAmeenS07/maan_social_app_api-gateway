@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.statusCodes = exports.REQUEST_FAILED = exports.REQUEST_COMPLETED = exports.SOMETHING_ERROR = exports.INVALID_USER = exports.TOKEN_MISSING = exports.INTERNAL_SERVER_ERROR = exports.POST_SERVICE_URL = exports.MEDIA_SERVICE_URL = exports.USER_SERVICE_URL = void 0;
+exports.USER_SERVICE_URL = "http://localhost:5001";
+exports.MEDIA_SERVICE_URL = "http://localhost:5002";
+exports.POST_SERVICE_URL = "http://localhost:5003";
+exports.INTERNAL_SERVER_ERROR = "Server Error !";
+exports.TOKEN_MISSING = "Token missing !";
+exports.INVALID_USER = "Invalid User !";
+exports.SOMETHING_ERROR = "Something error !";
+exports.REQUEST_COMPLETED = "REQUEST_COMPLETED";
+exports.REQUEST_FAILED = "REQUEST_FAILED";
+var statusCodes;
+(function (statusCodes) {
+    statusCodes[statusCodes["SERVER_ERROR"] = 500] = "SERVER_ERROR";
+    statusCodes[statusCodes["UNAUTHORIZED"] = 401] = "UNAUTHORIZED";
+    statusCodes[statusCodes["FORBIDDEN"] = 403] = "FORBIDDEN";
+    statusCodes[statusCodes["BAD_REQUEST"] = 400] = "BAD_REQUEST";
+    statusCodes[statusCodes["NOT_FOUND"] = 404] = "NOT_FOUND";
+})(statusCodes || (exports.statusCodes = statusCodes = {}));
